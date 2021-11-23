@@ -260,7 +260,7 @@ func (mate *SimMate) HandleEvents(requestDataInterval time.Duration, receiveData
 			// case RecvIDPick:
 
 			default:
-				log.Debug("Unknown recvInfo ID ", recv.ID)
+				log.Println("Unknown recvInfo ID ", recv.ID)
 			}
 		}
 	}
