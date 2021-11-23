@@ -2,12 +2,11 @@ package simconnect
 
 import (
 	"fmt"
+	"log"
 	"strings"
 	"sync"
 	"time"
 	"unsafe"
-
-	log "github.com/sirupsen/logrus"
 )
 
 const (
@@ -103,7 +102,7 @@ func (mate *SimMate) SetSimObjectData(name, unit string, value interface{}, data
 		mate.SetDataOnSimObject(defineID, ObjectIDUser, 0, 0, size, unsafe.Pointer(&buffer[0]))
 
 	default:
-		log.Error("SimConnect.SetSimObjectData: datatype not implemented: ", dataType)
+		log.Println("Error: SimConnect.SetSimObjectData: datatype not implemented: ", dataType)
 	}
 	return nil
 }
@@ -136,7 +135,7 @@ func (mate *SimMate) HandleEvents(requestDataInterval time.Duration, receiveData
 			ppData, r1, err := mate.GetNextDispatch()
 			if r1 < 0 {
 				if uint32(r1) != EFail {
-					log.Debug(fmt.Sprintf("GetNextDispatch error: %d %s", r1, err))
+					log.Println("Error: GetNextDispatch error: %d %s", r1, err)
 					return
 				}
 				if ppData == nil {
@@ -293,7 +292,7 @@ func (mate *SimMate) requestSimObjectData() (bool, error) {
 			return false, err
 		}
 		if count > 0 {
-			log.Debug(fmt.Sprintf("Registered %d simvars", count))
+			log.Println("Error: Registered %d simvars", count)
 		}
 		mate.dirty = false
 	}

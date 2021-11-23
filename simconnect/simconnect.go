@@ -7,8 +7,6 @@ import (
 	"sync"
 	"syscall"
 	"unsafe"
-
-	log "github.com/sirupsen/logrus"
 )
 
 const (
@@ -24,12 +22,6 @@ var (
 	requestID   DWord
 	initialized bool
 )
-
-func init() {
-	log.SetFormatter(&log.TextFormatter{
-		FullTimestamp: true,
-	})
-}
 
 type SimConnect struct {
 	handle    unsafe.Pointer
