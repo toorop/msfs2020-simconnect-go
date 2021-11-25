@@ -988,7 +988,7 @@ func (simco *SimConnect) MenuDeleteSubItem(menuEventID, subMenuEventID DWord) er
 }
 
 // SimConnect_CameraSetRelative6DOF is not documented (see SimConnect.h)
-func (simco *SimConnect) CameraSetRelative6DOF(deltaX, deltaY, deltaZ, pitchDeg, bankDeg, headingDeg float64) error {
+func (simco *SimConnect) CameraSetRelative6DOF(deltaX, deltaY, deltaZ, pitchDeg, bankDeg, headingDeg float32) error {
 	// SimConnect_CameraSetRelative6DOF(
 	// 	HANDLE hSimConnect,
 	// 	float fDeltaX,
